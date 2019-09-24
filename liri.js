@@ -12,10 +12,13 @@ var command = process.argv[2];
 
 // var mediaQuery = process.argv[3].slice(2).join("+");
 
-if (command === "movie-this") {
-  //   console.log("User wants a movie");
+function getMovieData() {
   var movieName = process.argv[3];
-  console.log(movieName);
+  if (!movieName) {
+    movieName = "Mr. Nobody";
+    // console.log(movieName);
+  }
+  //   console.log(movieName);
 
   var movieUrl =
     "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
@@ -30,15 +33,19 @@ if (command === "movie-this") {
       language: response.data.Language,
       plot: response.data.Plot,
       actors: response.data.Actors
+      //   return(response.);
+      //   return(response.);
+      //   return(response.Country);
+      //   return(response.Language);
+      //   return(response.Plot);
+      //   return(response.Actors);
+      //   });
     };
     console.log(movieData);
-
-    //   return(response.);
-    //   return(response.);
-    //   return(response.Country);
-    //   return(response.Language);
-    //   return(response.Plot);
-    //   return(response.Actors);
-    //   });
   });
+}
+
+if (command === "movie-this") {
+  // function(getMovieData);
+  getMovieData();
 }
