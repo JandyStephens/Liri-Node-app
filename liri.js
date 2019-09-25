@@ -10,44 +10,12 @@ var dotenv = require("dotenv");
 var fs = require("fs");
 
 var Movie = require("./movie.js");
+var Concert = require("./concert.js");
 
 var command = process.argv[2];
 // console.log(command);
 
 // var mediaQuery = process.argv[3].slice(2).join("+");
-
-function getConcertData() {
-  var concertArtist = process.argv.slice(3).join("+");
-  //   console.log(concertArtist);
-
-  if (!concertArtist) {
-    concertArtist = "Billie Eilish";
-    // console.log(concertArtist);
-  }
-  var concertUrl =
-    "https://rest.bandsintown.com/artists/" +
-    concertArtist +
-    "/events?app_id=codingbootcamp";
-  axios.get(concertUrl).then(function(response) {
-    // console.log(response.data);
-    var concertData = {
-      artist: concertArtist,
-      venue: response.data[0].venue.name,
-      location:
-        response.data[0].venue.city +
-        ", " +
-        response.data[0].venue.region +
-        " " +
-        response.data[0].venue.country,
-      date: moment(response.data[0].datetime).format("MM DD YYYY")
-    };
-    // .catch(function(error) {
-    //   //   throw error;
-    //   console.log("No known upcoming concerts at this time");
-    // });
-    console.log(concertData);
-  });
-}
 
 function getSpotifySong() {
   var song = process.argv.slice(3).join("+");
@@ -90,7 +58,7 @@ if (command === "movie-this") {
   Movie();
 } else if (command === "concert-this") {
   //   function(getConcertData);
-  getConcertData();
+  Concert();
 } else if (command === "spotify-this-song") {
   //   console.log("Spotify info here");
   getSpotifySong();
