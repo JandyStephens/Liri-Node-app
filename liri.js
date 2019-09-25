@@ -4,6 +4,7 @@ var keys = require("./keys.js");
 
 var axios = require("axios");
 var moment = require("moment");
+// moment().format();
 var nodeSpotify = require("node-spotify-api");
 var dotenv = require("dotenv");
 var fs = require("fs");
@@ -69,7 +70,7 @@ function getConcertData() {
         response.data[0].venue.region +
         " " +
         response.data[0].venue.country,
-      date: response.data[0].datetime
+      date: moment(response.data[0].datetime).format("MM DD YYYY")
     };
     // .catch(function(error) {
     //   //   throw error;
