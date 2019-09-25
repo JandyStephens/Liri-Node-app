@@ -6,6 +6,7 @@ var axios = require("axios");
 var moment = require("moment");
 var nodeSpotify = require("node-spotify-api");
 var dotenv = require("dotenv");
+var fs = require("fs");
 
 var command = process.argv[2];
 // console.log(command);
@@ -50,7 +51,7 @@ function getConcertData() {
   //   console.log(concertArtist);
 
   if (!concertArtist) {
-    concertArtist = "Spice Girls";
+    concertArtist = "Billie Eilish";
     // console.log(concertArtist);
   }
   var concertUrl =
@@ -60,6 +61,7 @@ function getConcertData() {
   axios.get(concertUrl).then(function(response) {
     // console.log(response.data);
     var concertData = {
+      artist: concertArtist,
       venue: response.data[0].venue.name,
       location:
         response.data[0].venue.city +
@@ -69,8 +71,21 @@ function getConcertData() {
         response.data[0].venue.country,
       date: response.data[0].datetime
     };
+    // .catch(function(error) {
+    //   //   throw error;
+    //   console.log("No known upcoming concerts at this time");
+    // });
     console.log(concertData);
   });
+}
+
+function getSpotifySong() {
+  var song = process.argv.slice(3).join("+");
+  if (!song) {
+    song = "The Sign";
+    // console.log(song);
+  }
+  console.log(song);
 }
 
 if (command === "movie-this") {
@@ -79,4 +94,11 @@ if (command === "movie-this") {
 } else if (command === "concert-this") {
   //   function(getConcertData);
   getConcertData();
+} else if (command === "spotify-this-song") {
+  //   console.log("Spotify info here");
+  getSpotifySong();
 }
+
+// else if (command === "do-what-it-says") {
+//   console.log("TODO: after spotify setup");
+// }
