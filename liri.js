@@ -83,10 +83,35 @@ function getConcertData() {
 function getSpotifySong() {
   var song = process.argv.slice(3).join("+");
   if (!song) {
-    song = "The Sign";
+    song = "The Sign by Ace of Base";
     // console.log(song);
   }
-  console.log(song);
+  //   console.log(song);
+
+  //   console.log(keys);
+
+  var spotify = new nodeSpotify({
+    id: keys.spotify.id,
+    secret: keys.spotify.secret
+  });
+
+  spotify
+    .search({ type: "track", query: song, limit: 1 })
+    .then(function(response) {
+      //   console.log(response.tracks.items[0].name);
+      var songData = {
+        songTitle: response.tracks.items[0].name,
+        album: response.tracks.items[0].album.name,
+        artist: response.tracks.items[0].artists[0].name,
+        previewLink: response.tracks.items[0].preview_url
+      };
+      console.log(songData);
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
+
+  // });
 }
 
 if (command === "movie-this") {
