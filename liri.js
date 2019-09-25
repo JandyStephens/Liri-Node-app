@@ -13,7 +13,7 @@ var command = process.argv[2];
 // var mediaQuery = process.argv[3].slice(2).join("+");
 
 function getMovieData() {
-  var movieName = process.argv[3];
+  var movieName = process.argv.slice(3).join("+");
   if (!movieName) {
     movieName = "Mr. Nobody";
     // console.log(movieName);
@@ -45,7 +45,38 @@ function getMovieData() {
   });
 }
 
+function getConcertData() {
+  var concertArtist = process.argv.slice(3).join("+");
+  //   console.log(concertArtist);
+
+  if (!concertArtist) {
+    concertArtist = "Spice Girls";
+    // console.log(concertArtist);
+  }
+  var concertUrl =
+    "https://rest.bandsintown.com/artists/" +
+    concertArtist +
+    "/events?app_id=codingbootcamp";
+  axios.get(concertUrl).then(function(response) {
+    // console.log(response.data);
+    var concertData = {
+      venue: response.data[0].venue.name,
+      location:
+        response.data[0].venue.city +
+        ", " +
+        response.data[0].venue.region +
+        " " +
+        response.data[0].venue.country,
+      date: response.data[0].datetime
+    };
+    console.log(concertData);
+  });
+}
+
 if (command === "movie-this") {
   // function(getMovieData);
   getMovieData();
+} else if (command === "concert-this") {
+  //   function(getConcertData);
+  getConcertData();
 }
