@@ -1,8 +1,7 @@
 var nodeSpotify = require("node-spotify-api");
 var keys = require("./keys.js");
 
-function getSpotifySong() {
-  var song = process.argv.slice(3).join("+");
+function getSpotifySong(song) {
   if (!song) {
     song = "The Sign by Ace of Base";
     // console.log(song);
