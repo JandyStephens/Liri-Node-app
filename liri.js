@@ -9,43 +9,12 @@ var nodeSpotify = require("node-spotify-api");
 var dotenv = require("dotenv");
 var fs = require("fs");
 
+var Movie = require("./movie.js");
+
 var command = process.argv[2];
 // console.log(command);
 
 // var mediaQuery = process.argv[3].slice(2).join("+");
-
-function getMovieData() {
-  var movieName = process.argv.slice(3).join("+");
-  if (!movieName) {
-    movieName = "Mr. Nobody";
-    // console.log(movieName);
-  }
-  //   console.log(movieName);
-
-  var movieUrl =
-    "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
-  axios.get(movieUrl).then(function(response) {
-    // console.log(response.data);
-    var movieData = {
-      title: response.data.Title,
-      year: response.data.Year,
-      imdb: response.data.imdbRating,
-      rotten: response.data.Ratings[1],
-      country: response.data.Country,
-      language: response.data.Language,
-      plot: response.data.Plot,
-      actors: response.data.Actors
-      //   return(response.);
-      //   return(response.);
-      //   return(response.Country);
-      //   return(response.Language);
-      //   return(response.Plot);
-      //   return(response.Actors);
-      //   });
-    };
-    console.log(movieData);
-  });
-}
 
 function getConcertData() {
   var concertArtist = process.argv.slice(3).join("+");
@@ -96,16 +65,18 @@ function getSpotifySong() {
   });
 
   spotify
-    .search({ type: "track", query: song, limit: 1 })
+    .search({ type: "track", query: song, limit: 10 })
     .then(function(response) {
-      //   console.log(response.tracks.items[0].name);
-      var songData = {
-        songTitle: response.tracks.items[0].name,
-        album: response.tracks.items[0].album.name,
-        artist: response.tracks.items[0].artists[0].name,
-        previewLink: response.tracks.items[0].preview_url
-      };
-      console.log(songData);
+      for (let i = 0; i < response.tracks.items.length; i++) {
+        // console.log(response.tracks.items[i].name);
+        var songData = {
+          songTitle: response.tracks.items[i].name,
+          album: response.tracks.items[i].album.name,
+          artist: response.tracks.items[i].artists[0].name,
+          previewLink: response.tracks.items[i].preview_url
+        };
+        console.log(songData);
+      }
     })
     .catch(function(err) {
       console.log(err);
@@ -116,7 +87,7 @@ function getSpotifySong() {
 
 if (command === "movie-this") {
   // function(getMovieData);
-  getMovieData();
+  Movie();
 } else if (command === "concert-this") {
   //   function(getConcertData);
   getConcertData();
