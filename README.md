@@ -10,21 +10,21 @@ For the'do-what-it-says' command, it will run whatever is entered in the random.
 
 If you do not enter a command at all, you will get an error that lists accepted commands.
 
-![concert-error](./images/no-command-error.png "error msg if no command entered")
+![concert-error](./images/no-command-error.PNG "error msg if no command entered")
 
-![concert-this](./images/concert-this.png "concert-this with and without search term")
+![concert-this](./images/concert-this.PNG "concert-this with and without search term")
 
-![movie-this](./images/movie-this.png "movie-this with and without search term")
+![movie-this](./images/movie-this.PNG "movie-this with and without search term")
 
-![spotify-this-song none](./images/spotify-this-song-none.png "spotify-this-song without search term")
+![spotify-this-song none](./images/spotify-this-song-none.PNG "spotify-this-song without search term")
 
-![spotify-this-song with search term](./images/spotify-this-song-with-song.png "spotify-this-song with search term")
+![spotify-this-song with search term](./images/spotify-this-song-with-song.PNG "spotify-this-song with search term")
 
-![do-what-concert](./images/do-what-it-says-concert.png "do-what-it-says-concert")
+![do-what-concert](./images/do-what-it-says-concert.PNG "do-what-it-says-concert")
 
-![do-what-movie](./images/do-what-it-says-movie.png "do-what-it-says-movie")
+![do-what-movie](./images/do-what-it-says-movie.PNG "do-what-it-says-movie")
 
-![do-what-song](./images/do-what-it-says-song.png "do-what-it-says-song")
+![do-what-song](./images/do-what-it-says-song.PNG "do-what-it-says-song")
 
 Tech used: node.js
 Libraries: npmjs.com, axios, moment, node-spotify-api, omdb, bandsintown
