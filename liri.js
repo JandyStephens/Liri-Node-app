@@ -21,10 +21,10 @@ var searchTerm = process.argv.slice(3).join("+");
 
 if (command === "movie-this") {
   // function(getMovieData);
-  Movie();
+  Movie(searchTerm);
 } else if (command === "concert-this") {
   //   function(getConcertData);
-  Concert();
+  Concert(searchTerm);
 } else if (command === "spotify-this-song") {
   //   console.log("Spotify info here");
   Spotify(searchTerm);
@@ -32,5 +32,7 @@ if (command === "movie-this") {
   // console.log(dataArr);
   simon();
 } else {
-  console.log("Command is unrecognized");
+  console.log(
+    "Command unrecognized. Accepted commands: 'movie-this''concert-this''spotify-this-song''do-what-it-says'"
+  );
 }

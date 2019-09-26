@@ -1,10 +1,12 @@
 var axios = require("axios");
 
-function getMovieData() {
+function getMovieData(movieName) {
   console.log(process.argv);
 
-  var movieName = process.argv.slice(3).join("+");
+  //   var movieName = process.argv.slice(3).join("+");
   if (!movieName) {
+    console.log("You didn't enter a movie to search. Here's a recommendation!");
+
     movieName = "Mr. Nobody";
     // console.log(movieName);
   }

@@ -3,6 +3,8 @@ var keys = require("./keys.js");
 
 function getSpotifySong(song) {
   if (!song) {
+    console.log("You didn't enter a song to search. Here's a recommendation!");
+
     song = "The Sign by Ace of Base";
     // console.log(song);
   }
