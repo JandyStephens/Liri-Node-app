@@ -10,7 +10,7 @@ For the'do-what-it-says' command, it will run whatever is entered in the random.
 
 If you do not enter a command at all, you will get an error that lists accepted commands.
 
-![concert-error](./images/no-command-error.PNG "error msg if no command entered")
+![concert-error](./Images/no-command-error.PNG "error msg if no command entered")
 
 ![concert-this](./images/concert-this.PNG "concert-this with and without search term")
 
