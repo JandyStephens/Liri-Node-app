@@ -12,15 +12,15 @@ function simon() {
     var dataArr = data.split(",");
     // console.log(dataArr[1]);
 
-    if (dataArr[0] === "movie-this") {
+    if (dataArr[0].trim() === "movie-this") {
       // functparam1MovieData);
       Movie(dataArr[1]);
       console.log(dataArr[1]);
-    } else if (dataArr[0] === "concert-this") {
+    } else if (dataArr[0].trim() === "concert-this") {
       //   function(getConcertData);
       // console.log(dataArr[1]);
       Concert(dataArr[1]);
-    } else if (dataArr[0] === "spotify-this-song") {
+    } else if (dataArr[0].trim() === "spotify-this-song") {
       //   console.log("Spotify info here");
       Spotify(dataArr[1]);
     }

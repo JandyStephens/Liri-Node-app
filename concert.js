@@ -14,7 +14,7 @@ function getConcertData(concertArtist) {
 
   var concertUrl =
     "https://rest.bandsintown.com/artists/" +
-    concertArtist +
+    concertArtist.trim() +
     "/events?app_id=codingbootcamp";
   axios
     .get(concertUrl)
@@ -35,7 +35,7 @@ function getConcertData(concertArtist) {
       //   //   throw error;
       //   console.log("No known upcoming concerts at this time");
       // });
-      //   console.log(concertData);
+      console.log(concertData);
     })
     .catch(function(err) {
       console.log(err);
